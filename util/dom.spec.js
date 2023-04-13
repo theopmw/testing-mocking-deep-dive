@@ -14,6 +14,18 @@ const document = window.document;
 document.write(htmlDocumentContent);
 vi.stubGlobal('document', document);
 
-it('first test', () => {
-  showError('test');
+it('should add an error paragraph to the id="errors" element', () => {
+  showError('Test');
+
+  const errorsEl = document.getElementById('errors');
+  const errorParagraph = errorsEl.firstElementChild;
+
+  expect(errorParagraph).not.toBeNull();
+});
+
+it('should not contain an error paragraph initially', () => {
+  const errorsEl = document.getElementById('errors');
+  const errorParagraph = errorsEl.firstElementChild;
+
+  expect(errorParagraph).toBeNull();
 });
